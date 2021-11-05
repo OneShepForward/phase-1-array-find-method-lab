@@ -1,98 +1,67 @@
-
-// const superbowlWin = function(array) {
-//     if (array.result === "W") {
-//         return array.year;
-//     } 
-// }
-
-
-  
-// console.log(record[1].year);
-
-// function loopAndUpdate(array) {
-//     const updatedArray = [];
-//     for (let item of array){
-//         // console.log(array);
-//         // console.log(updatedArray);
-//         updatedArray.push(item.title);
-//     }
-//     console.log(updatedArray);
-// }
-
-// loopAndUpdate(record);
-
-
-// function years(item) {
-//     return item.year;
-// }
-
-// function results(item) {
-//     return item.price;
-// }
-
-
-
-// Loop through inventory and find the first object whose condition returns true
-
-// function loopThroughAndFind(outcome, finder) {
-//     let found = null;
-//     for(let item of outcome){
-//         if(finder(item) === true){
-//             found = item.year;
-//             break;
-//         }
-//     }
-//     return found;
-// }
-
-
-
-
-// console.log(findWinner(record));
-
 // record of games
 
 const record = [
     { year: "1970", result: "N/A"},
-    // { year: "1969", result: "W"},
+    { year: "1969", result: "W"},
     { year: "1968", result: "N/A"},
     { year: "1967", result: "N/A"},
     { year: "1966", result: "L"},
   ];
 
-// Try the .find method
 
-// Will find the first superbowl win
-
+// Declare a function outside that will find the first superbowl win.
+// If it finds a match, it will return the object. If not, it will
+// return undefined.
 function findWinner(win){
     return win.result === 'W';
 }
 
-
+// superbowlWin function that returns the found win, if any
+// uses the callback function defined above.
 function superbowlWin(array) {
-    
-    let foundYear = array.find(findWinner);
-    // console.log(foundYear == undefined);
-    
-    
-    if (foundYear == undefined) {
-        return undefined;
-    } else {
-        return foundYear.year;
-    }
-    
-    // return foundYear.year;
-    // array.find(findWinner);
 
+    // // if you use this, you will return the year of the winner,
+    // // but if there is no winner, you will throw an error.
+        // // This is because you are trying to call the object method
+        // // ".year" on something that is undefined
+    // return array.find(findWinner).year;
 
-    // if (typeof foundYear.year === "string"){
+    // // Alternatively, you could assign the .find method to a variable
+    // // and then run a conditional statement to check for undefined.
+    // // (remove the return above to proceed).
+
+    // let foundYear = array.find(findWinner)
+ 
+    // if (foundYear == undefined) {
+    //     return undefined;
+    // } else {
     //     return foundYear.year;
     // }
-    // else {
-    //     return undefined;
-    // }
+
+    // // A ternary expression would be much cleaner. You could use
+    // // the expression below, which first checks if "foundYear" is 
+    // // truthy before proceeding to call the object method ".year" on it
+
+    // return foundYear ? foundYear.year : foundYear
+
+
+    
+    // Test arrow function
+        let foundYear = array.find(win => win.result === 'W');
+        return foundYear ? foundYear.year : foundYear
+
+               // Submitted code
+    // let foundYear = array.find(findWinner);
+
+    
+    // return foundYear.year
+
+    
+    
 }
 
+superbowlWin(record);
+// array.find()
 
 
 // const title = books.map(function(item){
